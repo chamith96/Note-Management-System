@@ -13,18 +13,21 @@
 //Page routes
 Route::get('/', 'PageController@index');
 
-//Note routes
-//Route::get('/note', 'NoteController@index');
-//Route::get('/note/create', 'NoteController@create');
-//Route::get('/note/{id}', 'NoteController@show');
-//Route::get('/note/{id}/edit', 'NoteController@edit');
 Route::resource('/note','NoteController');
 
-//Note actions
-//Route::post('/note/create', 'NoteController@store');
-//Route::post('/note/{id}', 'NoteController@update');
-//Route::delete('/note/{id}', 'NoteController@destroy');
+/*
+Note routes
+Route::get('/note', 'NoteController@index');
+Route::get('/note/create', 'NoteController@create');
+Route::get('/note/{id}', 'NoteController@show');
+Route::get('/note/{id}/edit', 'NoteController@edit');
 
+
+Note actions
+Route::post('/note/create', 'NoteController@store');
+Route::post('/note/{id}', 'NoteController@update');
+Route::delete('/note/{id}', 'NoteController@destroy');
+*/
 
 Auth::routes();
 

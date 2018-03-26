@@ -57,6 +57,7 @@ class NoteController extends Controller
         $note = new Note;
         $note->title = $request->input('title');
         $note->note = $request->input('note');
+        $note->user_id = auth()->user()->id;
         $note->save();
         return redirect('note')->with('success','Post Created');
     }
