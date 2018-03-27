@@ -71,6 +71,10 @@ class NoteController extends Controller
     public function show($id)
     {
         $note = Note::find($id);
+        if(auth()->user()->id != $note->user_id){
+          return redirect('/note')->with('$error', 'Unauthorized access');
+        }
+
         return view('note.show')->with('note', $note);
     }
 
@@ -100,7 +104,7 @@ class NoteController extends Controller
         'note' => 'required'
       ]);
 
-        //edit post or store in database
+        //edit post and store in database
         $note = Note::find($id);
         $note->title = $request->input('title');
         $note->note = $request->input('note');
