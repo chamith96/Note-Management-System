@@ -8,5 +8,5 @@ Go to Note+
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+NOTE+ Team.
 @endcomponent
