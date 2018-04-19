@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Sendmail;
 
 class HomeController extends Controller
 {
@@ -27,4 +29,10 @@ class HomeController extends Controller
 
         return view('home');
     }
+
+    public function messageSend(){
+      Mail::to(auth()->user()->email)->send(new Sendmail());
+        return redirect('/note');
+    }
+
 }

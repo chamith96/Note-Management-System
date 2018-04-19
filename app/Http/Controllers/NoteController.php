@@ -25,7 +25,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //$note = Note::all();
+        $notes = Note::all();
         $note = Note::orderBy('created_at', 'desc')->paginate(5);
         return view('note.note')->with('note', $note);
     }
@@ -53,13 +53,13 @@ class NoteController extends Controller
         'note' => 'required'
       ]);
 
-        //create post or store in database
+        //create post or stored in database
         $note = new Note;
         $note->title = $request->input('title');
         $note->note = $request->input('note');
         $note->user_id = auth()->user()->id;
         $note->save();
-        return redirect('note')->with('success','Post Created');
+        return redirect('/note')->with('success','Post Created');
     }
 
     /**
@@ -109,7 +109,7 @@ class NoteController extends Controller
         $note->title = $request->input('title');
         $note->note = $request->input('note');
         $note->save();
-        return redirect('note')->with('success','Post Updated');
+        return redirect('/note')->with('success','Post Updated');
     }
 
     /**
@@ -122,6 +122,7 @@ class NoteController extends Controller
     {
         $note = Note::find($id);
         $note->delete();
-        return redirect('/note')->with('success','Post removed');
+        return redirect('/note')->with('success', 'Post deleted');
     }
+
 }

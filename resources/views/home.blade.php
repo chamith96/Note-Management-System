@@ -16,6 +16,8 @@
                     <a href="note/create" class="btn btn-default-primary">Create Note</a>
                     <a href="note/" class="btn btn-default-primary">View Notes</a>
                 </div>
+                {{ csrf_field() }}
+                  <a href="{{ route('send') }}">send email</a>
             </div>
         </div>
     </div>
