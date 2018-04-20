@@ -14,8 +14,8 @@
 Route::get('/', 'PageController@index');
 
 Route::resource('/note','NoteController');
-Route::get('/message', 'PageController@message');
-Route::get('/email', 'HomeController@messageSend')->name('send');
+
+Route::get('/email', 'EmailController@messageSend')->name('send');
 
 /*
 Note routes
@@ -32,5 +32,3 @@ Route::delete('/note/{id}', 'NoteController@destroy');
 */
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

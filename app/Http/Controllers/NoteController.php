@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Note;
+use App\User;
 
 class NoteController extends Controller
 {
@@ -25,9 +26,12 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::all();
-        $note = Note::orderBy('created_at', 'desc')->paginate(5);
-        return view('note.note')->with('note', $note);
+      $user_id = auth()->user()->id;
+      $user = User::find($user_id);
+      return view('note.note')->with('note', $user->notes); //$user->notes ;notes is User model function, not database field
+
+      //$note = Note::orderBy('created_at', 'desc')->paginate(5); // view page pagenation: {{$note->links()}}
+      //return view('note.note')->with('note',$note);
     }
 
     /**
@@ -71,11 +75,12 @@ class NoteController extends Controller
     public function show($id)
     {
         $note = Note::find($id);
+        return view('note.show')->with('note', $note);
+        /*
         if(auth()->user()->id != $note->user_id){
           return redirect('/note')->with('$error', 'Unauthorized access');
         }
-
-        return view('note.show')->with('note', $note);
+        */
     }
 
     /**

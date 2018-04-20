@@ -27,7 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function note(){
+    //make relationship with Note model
+    public function notes(){
       return $this->hasMany('App\Note');
     }
 }
