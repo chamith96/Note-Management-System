@@ -1,12 +1,4 @@
-@component('mail::message')
-# Login Success to NOTE+
+<h1>{{$name}}</h1>
 
-Thank you for make note secure with us.
-
-@component('mail::button', ['url' => 'http://localhost:8000/home'])
-Go to Note+
-@endcomponent
-
-Thanks,<br>
-NOTE+ Team.
-@endcomponent
+Message
+<p>{{$content}}</p>

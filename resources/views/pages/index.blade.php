@@ -10,19 +10,19 @@
 
   <div class="container">
     <h2 align="center">Contat Us</h2>
-      <form action="{{route('send')}}" method="GET">
+      <form action="{{route('send')}}" method="POST">
         {{csrf_field()}}
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="name">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control">
+            <input type="email" class="form-control" name="email">
           </div>
             <div class="form-group">
             <label for="message">Message</label>
-            <textarea class="form-control"></textarea>
+            <textarea class="form-control" name="content"></textarea>
           </div>
             <button type="submit" class="btn btn-default">Submit</button>
       </form>

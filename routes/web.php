@@ -15,7 +15,7 @@ Route::get('/', 'PageController@index');
 
 Route::resource('/note','NoteController');
 
-Route::get('/email', 'PageController@messageSend')->name('send');
+Route::post('/email', 'PageController@contactSend')->name('send');
 //Route::get('/email', 'EmailController@messageSend')->name('send');
 
 /*
