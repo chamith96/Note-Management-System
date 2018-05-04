@@ -10,5 +10,10 @@ class PageController extends Controller
     public function index(){
       return view('pages.index');
     }
-    
+
+    public function messageSend(){
+      Mail::to(auth()->user()->email)->send(new Sendmail());
+        return redirect('/note');
+    }
+
 }
