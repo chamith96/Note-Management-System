@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Note;
 use App\User;
+use PDF;
 
 class NoteController extends Controller
 {
@@ -32,6 +33,14 @@ class NoteController extends Controller
 
       //$note = Note::orderBy('created_at', 'desc')->paginate(5); // view page pagenation: {{$note->links()}}
       //return view('note.note')->with('note',$note);
+    }
+
+    //download note pdf file
+    public function downloadPDF($id)
+    {
+      $note = Note::find($id);
+      $pdf = PDF::loadView('layouts.pdf', compact('note'));
+      return $pdf->download('myNote.pdf');
     }
 
     /**
@@ -82,6 +91,7 @@ class NoteController extends Controller
         }
         */
     }
+
 
     /**
      * Show the form for editing the specified resource.

@@ -18,6 +18,8 @@ Route::resource('/note','NoteController');
 Route::post('/email', 'PageController@contactSend')->name('send');
 //Route::get('/email', 'EmailController@messageSend')->name('send');
 
+Route::get('/downloadPDF/{id}','NoteController@downloadPDF')->name('pdfShow');
+
 /*
 Note routes
 Route::get('/note', 'NoteController@index');
